@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Calc & Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <section id="decoy-screen" class="app-screen active">
+            <div class="decoy-tabs">
+                <button id="tab-calc" class="decoy-tab-btn active">Calculator</button>
+                <button id="tab-game" class="decoy-tab-btn">Arcade</button>
+            </div>
+
+            <div id="calc-wrapper" class="decoy-engine active">
+                <div class="calculator">
+                    <div class="calc-display-container">
+                        <input type="text" id="calc-display" readonly placeholder="0">
+                    </div>
+                    <div class="calc-buttons">
+                        <button class="calc-btn clear" data-val="C">AC</button>
+                        <button class="calc-btn backspace" data-val="del">⌫</button>
+                        <button class="calc-btn operator" data-val="/">÷</button>
+                        <button class="calc-btn operator" data-val="*">×</button>
+
+                        <button class="calc-btn number" data-val="7">7</button>
+                        <button class="calc-btn number" data-val="8">8</button>
+                        <button class="calc-btn number" data-val="9">9</button>
+                        <button class="calc-btn operator" data-val="-">-</button>
+
+                        <button class="calc-btn number" data-val="4">4</button>
+                        <button class="calc-btn number" data-val="5">5</button>
+                        <button class="calc-btn number" data-val="6">6</button>
+                        <button class="calc-btn operator" data-val="+">+</button>
+
+                        <button class="calc-btn number" data-val="1">1</button>
+                        <button class="calc-btn number" data-val="2">2</button>
+                        <button class="calc-btn number" data-val="3">3</button>
+                        <button class="calc-btn equals" data-val="=">=</button>
+
+                        <button class="calc-btn number double-width" data-val="0">0</button>
+                        <button class="calc-btn number" data-val=".">.</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="game-wrapper" class="decoy-engine">
+                <div class="game-container">
+                    <div class="game-status" id="game-status">Player X's Turn</div>
+                    <div class="tic-tac-toe-grid">
+                        <div class="cell" data-index="0"></div>
+                        <div class="cell" data-index="1"></div>
+                        <div class="cell" data-index="2"></div>
+                        <div class="cell" data-index="3"></div>
+                        <div class="cell" data-index="4"></div>
+                        <div class="cell" data-index="5"></div>
+                        <div class="cell" data-index="6"></div>
+                        <div class="cell" data-index="7"></div>
+                        <div class="cell" data-index="8"></div>
+                    </div>
+                    <button id="reset-game-btn" class="game-reset-btn">Reset Match</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="radar-screen" class="app-screen">
+            <div class="terminal-card">
+                <div class="terminal-header">
+                    <span class="pulse-indicator"></span>
+                    <h2>SECURE DISPATCH TERMINAL</h2>
+                </div>
+                <p class="terminal-sub">Encrypted incident broadcasting node</p>
+
+                <div id="dispatch-form-view">
+                    <div class="form-group">
+                        <label for="dispatch-type">Incident Type</label>
+                        <select id="dispatch-type" class="terminal-input">
+                            <option value="medical">Medical Emergency / PEP Required</option>
+                            <option value="gbv">Gender-Based Violence / Assault</option>
+                            <option value="security">Immediate Physical Threat</option>
+                            <option value="other">General Crisis Assistance</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dispatch-location">Current Location Details</label>
+                        <input type="text" id="dispatch-location" class="terminal-input" placeholder="e.g., Tom Mboya St, Nairobi / Tatu City">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dispatch-notes">Critical Notes (Confidential)</label>
+                        <textarea id="dispatch-notes" class="terminal-input" rows="3" placeholder="Provide any safety risks or special instructions..."></textarea>
+                    </div>
+
+                    <button id="dispatch-btn" class="cyber-btn">EXECUTE DISPATCH PROTOCOL</button>
+                </div>
+
+                <div id="dispatch-tracking-view" class="hidden">
+                    <div class="tracking-banner">
+                        <div class="tracking-spinner"></div>
+                        <div>
+                            <h3 id="tracking-headline">AI System Routing Responders...</h3>
+                            <p id="tracking-subtext">Securing encrypted channel</p>
+                        </div>
+                    </div>
+
+                    <div class="eta-box">
+                        <span class="eta-label">ESTIMATED ARRIVAL TIME</span>
+                        <div id="live-countdown" class="eta-timer">--:--</div>
+                    </div>
+
+                    <div class="local-dispatchers-section">
+                        <h4>DISPATCHED UNITS IN YOUR AREA</h4>
+                        <div id="active-units-list"></div>
+                    </div>
+
+                    <button id="cancel-dispatch-btn" class="cancel-btn">Abort Protocol</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="guidance-screen" class="app-screen">
+            <div class="guidance-card">
+                <a href="tel:999" id="persistent-emergency-trigger" class="stress-call-button">
+                    <span class="btn-icon">📞</span> CALL EMERGENCY SERVICES (<span id="detected-local-num">999</span>)
+                </a>
+
+                <div class="chat-interface-wrapper">
+                    <div class="chat-header-row">
+                        <div class="chat-meta">
+                            <h3>CRISIS ASSISTANT: BANCA</h3>
+                            <span class="secure-badge">End-to-End Encrypted Session</span>
+                        </div>
+                        <button id="clear-session-trigger" class="reset-session-btn" title="Wipe session and start fresh">New Session</button>
+                    </div>
+
+                    <div id="banca-chat-log" class="chat-log-viewport"></div>
+
+                    <div class="chat-input-row">
+                        <input type="text" id="banca-user-input" placeholder="Type what is happening right now..." autocomplete="off">
+                        <button id="banca-send-btn">SEND</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="breathe-screen" class="app-screen">
+            <div class="cope-card">
+                <h2>KINETIC CALM CORE</h2>
+                <p class="cope-sub">Pace your breathing to stabilize your heart rate</p>
+
+                <div class="breathing-container">
+                    <div class="breathing-gaze-ring"></div>
+                    <div class="breathing-circle" id="breath-bubble"></div>
+                    <span id="breath-instruction" class="breath-text">Prepare</span>
+                </div>
+                <div class="breath-stats">
+                    <span id="breath-timer">00</span>s remaining
+                </div>
+            </div>
+        </section>
+
+        <section id="resources-screen" class="app-screen">
+            <div class="nodes-header">
+                <h2>CRITICAL EMERGENCY NODES</h2>
+                <p>Verified response hotlines and support infrastructure in Kenya</p>
+            </div>
+            <div id="resources-container" class="nodes-grid"></div>
+        </section>
+
+        <nav class="bottom-nav hidden" id="master-nav">
+            <button class="nav-tab-item" data-target="decoy-screen"><span>Calculator</span></button>
+            <button class="nav-tab-item" data-target="radar-screen"><span>Terminal</span></button>
+            <button class="nav-tab-item active" data-target="guidance-screen"><span>Guidance</span></button>
+            <button class="nav-tab-item" data-target="breathe-screen"><span>Cope</span></button>
+            <button class="nav-tab-item" data-target="resources-screen"><span>Nodes</span></button>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
